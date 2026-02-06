@@ -1,0 +1,581 @@
+/* ====================================
+   ベース設定
+==================================== */
+:root {
+    --bg-color: #fafafa;
+    --text-main: #333333;
+    --text-light: #666666;
+    --accent: #008cff;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --font-en: 'Jost', sans-serif;
+    --font-jp: 'Noto Sans JP', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-jp);
+    line-height: 1.8;
+    overflow-x: hidden;
+    letter-spacing: 0.05em;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+img { width: 100%; height: auto; display: block; }
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ヘッダー */
+.header {
+    position: absolute;
+    top: 30px; left: 40px; right: 40px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-family: var(--font-en);
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    color: #111;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8); 
+}
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+.nav-menu a {
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: #333;
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
+.nav-menu a:hover { color: var(--accent); }
+
+/* ====================================
+   ヒーローセクション
+==================================== */
+.hero {
+    position: relative;
+    width: 100%; height: 100vh;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+}
+
+/* 動画背景用の設定 */
+.hero-bg-video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.hero-bg-video video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 動画を少し暗くするフィルター */
+.hero-bg-video::after {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1;
+}
+
+/* テック・クリエイティブ用キャッチコピー */
+.hero-content-tech {
+    z-index: 10;
+    padding: 40px;
+    animation: fadeUp 1.2s ease forwards;
+    max-width: 90%;
+}
+
+.main-title-tech {
+    font-family: var(--font-jp);
+    font-size: 3.5rem;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-shadow: 0 5px 30px rgba(0,0,0,0.8);
+}
+
+.sub-title-tech {
+    font-family: var(--font-en);
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    color: #ddd;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    animation: bounce 2s infinite;
+    z-index: 10;
+    writing-mode: vertical-rl;
+}
+
+/* セクション共通 */
+.section { padding: 100px 0; }
+.bg-light { background-color: #f7f7f7; }
+
+.section-title {
+    font-family: var(--font-en);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+    color: #111;
+    font-weight: 300;
+}
+.section-sub-title {
+    font-family: var(--font-jp);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: #444;
+}
+.section-desc {
+    text-align: center;
+    color: #888;
+    margin-bottom: 60px;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+/* ====================================
+   Service & Price (修正済み)
+==================================== */
+.service-grid {
+    display: flex;
+    justify-content: center;
+    max-width: 100%; 
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.service-card {
+    background: #fff;
+    padding: 80px 60px; /* 箱のサイズ */
+    border: 1px solid #eee;
+    text-align: center;
+    transition: 0.3s;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 800px; /* 箱の幅 */
+    border-radius: 12px;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.service-card.featured { border: 2px solid #333; }
+
+.badge {
+    position: absolute;
+    top: -15px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 8px 25px; 
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+/* ▼ タイトル (HTMLのタグは <h3> なので h3 を指定) */
+.service-card h3 {
+    font-family: var(--font-en);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+}
+
+/* ▼ 価格 (HTMLのクラスは .price なので .price を指定) */
+.service-card .price {
+    font-family: var(--font-en);
+    font-size: 4.5rem; /* 巨大化！ */
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #000;
+    line-height: 1.1;
+}
+
+.tax {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* ▼ サブテキスト (HTMLのクラスは .sub-text) */
+.service-card .sub-text {
+    font-size: 1.2rem; 
+    color: #444; 
+    margin-bottom: 50px;
+    font-weight: 500;
+}
+
+/* ▼ リスト部分 */
+.service-card .card-body ul {
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding-top: 50px; 
+    margin-top: 0;
+}
+
+.service-card .card-body li {
+    font-size: 1.5rem;
+    font-weight: 700; 
+    color: #111;
+    letter-spacing: 0.05em;
+    line-height: 1.2; 
+    margin-bottom: 24px;
+}
+
+.service-card .card-body li:last-child {
+    margin-bottom: 0;
+}
+
+
+.note-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 50px;
+}
+
+
+/* Profile */
+.glass-box-static {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 60px; max-width: 900px; margin: 0 auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+.profile-name {
+    font-family: var(--font-en); font-size: 1.8rem;
+    margin-bottom: 20px; letter-spacing: 0.1em;
+}
+.profile-role { font-size: 1rem; color: #666; font-weight: 400; }
+.profile-text { font-size: 0.95rem; line-height: 2; margin-bottom: 30px; }
+.skill-list { display: flex; gap: 10px; flex-wrap: wrap; }
+.skill-tag {
+    background: #333; color: #fff; padding: 5px 15px;
+    font-family: var(--font-en); font-size: 0.75rem; letter-spacing: 0.05em;
+    border-radius: 2px;
+}
+
+/* Contact & Line */
+.line-section, .contact-section { text-align: center; }
+.line-glass-card {
+    background: #fff; padding: 60px 40px; border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03); max-width: 800px; margin: 0 auto;
+}
+.btn-line {
+    display: inline-block; padding: 16px 50px; background: #00B900;
+    color: #fff; font-weight: 600; border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0, 185, 0, 0.2);
+}
+.contact-box {
+    max-width: 700px; margin: 0 auto;
+}
+.contact-msg { margin-bottom: 40px; }
+.btn-contact {
+    display: inline-block; padding: 18px 60px;
+    background: #111; color: #fff;
+    font-weight: 500; letter-spacing: 0.1em; border-radius: 50px;
+    transition: 0.3s;
+}
+.btn-contact:hover {
+    background: #333; transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Footer & Lightbox */
+.footer { padding: 40px 20px; text-align: center; font-size: 0.75rem; border-top: 1px solid #eee; color: #888; }
+.lightbox {
+    display: none; position: fixed; z-index: 9999; top: 0; left: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+    align-items: center; justify-content: center; animation: fadeIn 0.3s ease;
+}
+.lightbox.active { display: flex; }
+.lightbox-content { max-width: 90%; max-height: 90%; object-fit: contain; }
+.close-lightbox {
+    position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; cursor: pointer;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
+
+@media (max-width: 768px) {
+    .main-title-tech { font-size: 3rem; }
+    .glass-box { padding: 40px 20px; width: 90%; }
+    .header { flex-direction: column; top: 20px; }
+    .nav-menu ul { margin-top: 15px; gap: 20px; font-size: 0.8rem; }
+    .service-grid { grid-template-columns: 1fr; }
+    .glass-box-static { padding: 30px; } 
+    .char-info { padding: 20px; }
+    .char-img-item { flex: 0 0 180px; }
+    
+    /* スマホでの調整 */
+    .service-card { padding: 50px 30px; }
+    .service-card .price { font-size: 3rem; }
+    .service-card .card-body li { font-size: 1.1rem; }
+}
+
+/* =========================================
+   インパクト重視のお問い合わせボタン
+   ========================================= */
+.big-contact-btn {
+    display: inline-block;
+    background-color: #111;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 20px 60px;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    border: 2px solid #111;
+    line-height: 1.4;
+}
+
+.big-contact-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    background-color: #fff;
+    color: #111 !important;
+}
+
+.big-contact-btn .jp-text {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: 0.05em;
+}
+
+.big-contact-btn .en-text {
+    display: block;
+    font-size: 0.8rem;
+    font-family: 'Jost', sans-serif;
+    opacity: 0.8;
+    letter-spacing: 0.15em;
+}
+
+/* =========================================
+   プロフィールセクションのデザイン
+   ========================================= */
+.profile-section {
+    background-color: #f8f9fa; 
+    padding: 80px 0;
+}
+
+.profile-content {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.profile-text h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+}
+
+.profile-text h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #111;
+    margin: 15px auto 0;
+}
+
+.profile-text p {
+    font-size: 1rem;
+    line-height: 2;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        padding: 40px 20px;
+    }
+    .profile-text h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* --- フッターと著作権表示 --- */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-policy {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .footer-policy {
+        text-align: center;
+    }
+}
+
+.footer-policy strong {
+    color: #ffcccc;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* =========================================
+   キャラクターブランディング特設エリア (横スクロール統一)
+   ========================================= */
+.character-showcase {
+    margin-bottom: 80px;
+}
+
+.char-box {
+    margin-bottom: 50px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    border: 1px solid #f0f0f0;
+}
+
+.char-info {
+    padding: 30px 40px;
+    background: #fdfdfd;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.char-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-family: var(--font-en);
+    background: #333;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.char-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: var(--font-en);
+    letter-spacing: 0.05em;
+}
+
+.char-desc {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 横スクロールギャラリー */
+.char-gallery-scroll {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px;
+    gap: 15px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.char-gallery-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+.char-gallery-scroll::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 10px;
+}
+.char-gallery-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.char-img-item {
+    flex: 0 0 220px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.char-img-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
