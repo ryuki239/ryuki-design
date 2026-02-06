@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORDER FORM | RYUKI DESIGN</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/order.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="logo"><a href="index.html">RYUKI DESIGN</a></h1>
+        <p class="page-title">ORDER FORM</p>
+    </header>
+
+    <main class="main-container">
+        
+        <div class="form-wrapper">
+            
+            <div class="text-header">
+                <h2 class="jp-title">YouTubeサムネイル依頼フォーム</h2>
+                <p class="en-title">ORDER FORM</p>
+            </div>
+
+            <div class="form-container">
+                
+                <form id="orderForm" action="https://formspree.io/f/mqarowpo" method="POST">
+                    
+                    <div class="form-group">
+                        <label>お名前 / 活動名 <span class="required">*</span></label>
+                        <input type="text" name="name" required placeholder="例：RYUKI">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>メールアドレス <span class="required">*</span></label>
+                        <input type="email" name="email" required placeholder="例：info@example.com">
+                        <p style="font-size: 0.8rem; color: #e74c3c; margin-top: 5px;">
+                            ※キャリアメール（docomo, au, softbank）は返信が届かない場合があります。<br>
+                            できるだけGmailなどのPCメールをご入力ください。
+                        </p>
+                    </div>
+
+                    <input type="hidden" name="selected_plan" value="youtube_monitor">
+
+                    <div id="form-youtube" class="detail-section">
+                        <div class="section-header">ご依頼内容の詳細</div>
+                        
+                        <div class="form-group">
+                            <label>YouTubeチャンネル名</label>
+                            <input type="text" name="youtube_channel_name" placeholder="チャンネル名">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>チャンネルURL</label>
+                            <input type="url" name="youtube_url" placeholder="https://youtube.com/...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>画像に入れたい文字（コピー）</label>
+                            <textarea name="youtube_copy" rows="3" placeholder="例：【衝撃】まさかの結末 / 初配信！ など"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>希望する雰囲気・イメージ</label>
+                            <textarea name="youtube_image" rows="3" placeholder="例：ホラー系で暗く / ゲーミング風にネオンで光らせて"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="terms-box" style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-top: 40px; margin-bottom: 30px; text-align: left;">
+                        <h4 style="margin-top: 0; color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">⚠️ モニター応募条件（必ずご確認ください）</h4>
+                        
+                        <ul style="font-size: 0.9rem; color: #555; list-style: none; padding: 0;">
+                            <li style="margin-bottom: 10px;"><strong>【制作料金】</strong> <span style="color: #ff2a2a; font-weight: bold; font-size: 1.1em;">0円（無料）</span></li>
+                            <li style="margin-bottom: 10px;"><strong>【修正対応】</strong> 2回まで無料で対応いたします。</li>
+                            <li style="margin-bottom: 10px;"><strong>【条件】</strong> 完成した画像を私のポートフォリオやSNSで実績として公開させていただきます。</li>
+                            <li style="margin-bottom: 10px;">
+                                <strong>【受付枠】</strong> 
+                                <span style="color: #ff2a2a; font-weight: bold;">1日10名様限定（先着順）</span><br>
+                                <span style="font-size: 0.85rem; color: #666;">※枠が埋まり次第、翌日以降の対応をご相談させていただく場合があります。</span>
+                            </li>
+                        </ul>
+
+                        <div class="check-box-area" style="margin-top: 20px; background: #fff; padding: 15px; border: 1px solid #ddd; border-radius: 6px;">
+                            <label class="check-label" style="display: flex; align-items: flex-start; cursor: pointer;">
+                                <input type="checkbox" name="agreement" required style="margin-top: 5px; margin-right: 10px; transform: scale(1.5);">
+                                <span class="check-text" style="font-size: 0.95rem; font-weight: bold;">
+                                    制作した画像を実績として公開することに同意します。<br>
+                                    <span class="note" style="color: #ff2a2a; font-size: 0.8rem; font-weight: normal;">※チェックがない場合、送信できません。</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="submit-area">
+                        <button type="submit" class="btn-submit">送信する (¥0)</button>
+                    </div>
+
+                </form>
+                
+                </div> </div>
+    </main>
+
+</body>
+</html>
